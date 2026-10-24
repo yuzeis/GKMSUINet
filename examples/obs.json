@@ -1,0 +1,291 @@
+{
+ "v": "uiobs.v1",
+ "exam": {
+  "produce": "produce-008",
+  "step": "AUDITION_MID1",
+  "plan": 2,
+  "types": [
+   1,
+   3,
+   3,
+   1,
+   1,
+   2,
+   2,
+   3,
+   1
+  ],
+  "permil": [
+   41400,
+   40860,
+   26600
+  ],
+  "crit": [
+   1960,
+   1089,
+   1307
+  ],
+  "turn": 3,
+  "limit": 9
+ },
+ "num": {
+  "score": 0,
+  "stamina": 28,
+  "max_stamina": 35,
+  "block": 10,
+  "playable": 1,
+  "plays": 0
+ },
+ "stance": [
+  null,
+  0
+ ],
+ "status": [
+  [
+   "lesson_buff",
+   8.0,
+   -1
+  ],
+  [
+   "parameter_buff",
+   11.0,
+   11
+  ],
+  [
+   "parameter_buff_multiple",
+   1.0,
+   4
+  ],
+  [
+   "stamina_consumption_down",
+   1.0,
+   5
+  ],
+  [
+   "lesson_parameter_multiple",
+   0.30000001192092896,
+   2
+  ],
+  [
+   "lesson_parameter_multiple",
+   0.30000001192092896,
+   2
+  ],
+  [
+   "lesson_parameter_multiple",
+   0.10000000149011612,
+   4
+  ]
+ ],
+ "ench": [
+  [
+   "enchant-customize_pitem-01-04-3-001_00-04-2-001_01-01-1-001_00-04-4-001-enc01",
+   -1,
+   -1
+  ],
+  [
+   "enchant-customize_pitem-01-04-3-001_00-04-2-001_01-01-1-001_00-04-4-001-enc01",
+   -1,
+   -1
+  ],
+  [
+   "enchant-p_item_effect_01-3-341-1-enc01",
+   -1,
+   -1
+  ],
+  [
+   "enchant-p_ef-hif_memory-p_card-01-act-2_030-enc02",
+   -1,
+   -1
+  ],
+  [
+   "enchant-p_ef-hif_memory-p_card-01-men-2_036-enc02",
+   -1,
+   -1
+  ],
+  [
+   "enchant-p_ef-hif_memory-p_card-01-men-2_041-enc02",
+   -1,
+   -1
+  ],
+  [
+   "enchant-p_ef-hif_memory-p_card-01-men-2_037-enc02",
+   -1,
+   -1
+  ],
+  [
+   "enchant-p_ef-hif_memory-p_card-01-act-2_030-enc01",
+   2,
+   -1
+  ],
+  [
+   "enchant-p_ef-hif_memory-p_card-01-men-2_036-enc01",
+   1,
+   -1
+  ],
+  [
+   "enchant-p_ef-hif_memory-p_card-01-men-2_041-enc01",
+   1,
+   -1
+  ],
+  [
+   "enchant-p_ef-hif_memory-p_card-01-men-2_037-enc01",
+   1,
+   -1
+  ],
+  [
+   "enchant-p_card-01-men-2_038-enc01",
+   -1,
+   -1
+  ],
+  [
+   "enchant-pdrink_00-2-010-enc01",
+   -1,
+   4
+  ]
+ ],
+ "hand": [
+  {
+   "id": "p_card-01-men-2_099",
+   "u": 0,
+   "p": 1
+  },
+  {
+   "id": "p_card-01-men-3_036",
+   "u": 1,
+   "p": 1
+  },
+  {
+   "id": "p_card-01-men-2_037",
+   "u": 1,
+   "c": [
+    [
+     "p_card_custom-040-g_effect-cost_parameter_buff_reduce-1",
+     1
+    ]
+   ],
+   "p": 1
+  },
+  {
+   "id": "p_card-01-men-3_033",
+   "u": 0,
+   "p": 1
+  }
+ ],
+ "deck": [
+  {
+   "id": "p_card-00-acc-0_002",
+   "u": 0
+  },
+  {
+   "id": "p_card-00-acc-0_002",
+   "u": 0
+  },
+  {
+   "id": "p_card-01-act-2_030",
+   "u": 1,
+   "c": [
+    [
+     "p_card_custom-040_070-g_effect-parameter_buff_turn_add-1-g_effect-parameter_buff_turn_add-3",
+     2
+    ]
+   ]
+  },
+  {
+   "id": "p_card-01-men-0_026",
+   "u": 0
+  },
+  {
+   "id": "p_card-01-men-2_036",
+   "u": 0
+  },
+  {
+   "id": "p_card-01-men-2_041",
+   "u": 0
+  },
+  {
+   "id": "p_card-01-men-3_006",
+   "u": 0
+  }
+ ],
+ "grave": [
+  {
+   "id": "p_card-00-men-3_005",
+   "u": 1,
+   "c": [
+    [
+     "p_card_custom-070-g_effect-stamina_consumption_down_turn_add-2",
+     1
+    ]
+   ]
+  },
+  {
+   "id": "p_card-00-sup-3_152",
+   "u": 1
+  },
+  {
+   "id": "p_card-01-act-2_001",
+   "u": 1
+  },
+  {
+   "id": "p_card-01-act-3_049",
+   "u": 1
+  },
+  {
+   "id": "p_card-01-act-3_185",
+   "u": 1,
+   "c": [
+    [
+     "p_card_custom-wrapper-p_card-01-act-3_185-b-01",
+     1
+    ]
+   ]
+  },
+  {
+   "id": "p_card-01-ido-3_241",
+   "u": 1
+  },
+  {
+   "id": "p_card-01-men-3_034",
+   "u": 0
+  },
+  {
+   "id": "p_card-01-men-3_035",
+   "u": 1
+  }
+ ],
+ "hold": [],
+ "lost": [
+  {
+   "id": "p_card-01-men-2_038",
+   "u": 0
+  },
+  {
+   "id": "p_card-01-men-2_098",
+   "u": 1
+  }
+ ],
+ "played": [],
+ "drinks": [],
+ "legal": [
+  [
+   "play",
+   0
+  ],
+  [
+   "play",
+   1
+  ],
+  [
+   "play",
+   2
+  ],
+  [
+   "play",
+   3
+  ],
+  [
+   "end"
+  ]
+ ]
+}

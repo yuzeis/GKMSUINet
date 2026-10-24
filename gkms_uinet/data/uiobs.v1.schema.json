@@ -1,0 +1,341 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gkms-uinet/uiobs.v1",
+  "title": "UIObs v1 -- what the H.I.F exam screen shows at a decision",
+  "description": "What the H.I.F exam screen shows at a decision.",
+  "type": "object",
+  "required": [
+    "v",
+    "exam",
+    "num",
+    "stance",
+    "status",
+    "ench",
+    "hand",
+    "deck",
+    "grave",
+    "hold",
+    "lost",
+    "played",
+    "drinks",
+    "legal"
+  ],
+  "$defs": {
+    "card": {
+      "type": "object",
+      "required": [
+        "id",
+        "u"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ProduceCard id (master), e.g. p_card-02-act-3_001"
+        },
+        "u": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "upgrade count shown now (base + in-exam + support upgrades)"
+        },
+        "c": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "prefixItems": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "description": "customizes [[ProduceCardCustomize id, count]]"
+        },
+        "g": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "in-exam grow effect ids (ProduceCardGrowEffect)"
+        },
+        "p": {
+          "type": "integer",
+          "enum": [
+            0,
+            1
+          ],
+          "description": "hand only: can be played now"
+        }
+      }
+    },
+    "turns": {
+      "type": "integer",
+      "description": "turns left; -1 = no limit"
+    }
+  },
+  "properties": {
+    "v": {
+      "const": "uiobs.v1"
+    },
+    "exam": {
+      "type": "object",
+      "required": [
+        "produce",
+        "step",
+        "plan",
+        "turn",
+        "limit",
+        "types",
+        "permil",
+        "crit"
+      ],
+      "properties": {
+        "produce": {
+          "enum": [
+            "produce-007",
+            "produce-008"
+          ],
+          "description": "007 選抜試験, 008 本戦"
+        },
+        "step": {
+          "enum": [
+            "AUDITION_MID1",
+            "AUDITION_MID2",
+            "AUDITION_FINAL"
+          ]
+        },
+        "plan": {
+          "type": "integer",
+          "description": "the idol's plan type (ProducePlanType number: 2 sense, 3 logic, 4 anomaly)"
+        },
+        "idol": {
+          "type": "string",
+          "description": "IdolCard id (informative; the network does not read it)"
+        },
+        "turn": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "limit": {
+          "type": "integer",
+          "description": "turn count including extra turns granted so far"
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "enum": [
+              1,
+              2,
+              3
+            ]
+          },
+          "description": "the colour of every turn: 1 Vo, 2 Da, 3 Vi"
+        },
+        "permil": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 3,
+          "maxItems": 3,
+          "description": "score multiplier per colour (Vo, Da, Vi), permil"
+        },
+        "crit": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 3,
+          "maxItems": 3,
+          "description": "審査基準 per colour"
+        }
+      }
+    },
+    "num": {
+      "type": "object",
+      "required": [
+        "score",
+        "stamina",
+        "max_stamina",
+        "block",
+        "playable",
+        "plays"
+      ],
+      "properties": {
+        "score": {
+          "type": "integer"
+        },
+        "stamina": {
+          "type": "integer"
+        },
+        "max_stamina": {
+          "type": "integer"
+        },
+        "block": {
+          "type": "integer",
+          "description": "元気"
+        },
+        "playable": {
+          "type": "integer",
+          "description": "card plays left this turn"
+        },
+        "plays": {
+          "type": "integer",
+          "description": "cards played this turn"
+        }
+      }
+    },
+    "stance": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "指針: Preservation, OverPreservation, Leisurely, Concentration, FullPower, or null"
+        },
+        {
+          "type": "integer",
+          "description": "its step"
+        }
+      ]
+    },
+    "status": {
+      "type": "array",
+      "description": "status icons [kind, value, turns]",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "enum": [
+              "lesson_buff",
+              "review",
+              "aggressive",
+              "full_power_point",
+              "enthusiastic",
+              "anti_debuff",
+              "parameter_buff",
+              "parameter_buff_multiple",
+              "stance_lock",
+              "lesson_debuff",
+              "stamina_consumption_down",
+              "stamina_consumption_add",
+              "stamina_consumption_down_fix",
+              "stamina_consumption_add_fix",
+              "block_restriction",
+              "block_add_down",
+              "block_add_down_fix",
+              "stamina_recover_restriction",
+              "stamina_recover_add",
+              "buff_consumption_add",
+              "slump",
+              "gimmick_parameter_debuff",
+              "panic",
+              "card_draw_down",
+              "play_card_limit",
+              "lesson_parameter_multiple",
+              "lesson_parameter_multiple_down",
+              "lesson_buff_multiple",
+              "review_multiple",
+              "review_count_add",
+              "full_power_lesson_multiple_add",
+              "concentration_lesson_multiple_add",
+              "full_power_point_add",
+              "enthusiastic_add",
+              "lesson_parameter_depend",
+              "timed_gain",
+              "extra_turn",
+              "lesson_buff_gain_multiple",
+              "parameter_buff_gain_multiple",
+              "aggressive_gain_multiple",
+              "review_gain_multiple",
+              "lesson_buff_gain_fix",
+              "aggressive_gain_fix",
+              "parameter_buff_gain_fix",
+              "enthusiastic_gain_permil"
+            ]
+          },
+          {
+            "type": "number"
+          },
+          {
+            "$ref": "#/$defs/turns"
+          }
+        ]
+      }
+    },
+    "ench": {
+      "type": "array",
+      "description": "lasting-effect icons (P items, memories, a card's lasting effect) [ProduceExamStatusEnchant id, uses left (-1 = no limit), turns]",
+      "items": {
+        "type": "array",
+        "prefixItems": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "integer"
+          },
+          {
+            "$ref": "#/$defs/turns"
+          }
+        ]
+      }
+    },
+    "hand": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/card"
+      },
+      "description": "in screen order"
+    },
+    "deck": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/card"
+      },
+      "description": "山札 as a multiset (any order)"
+    },
+    "grave": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/card"
+      }
+    },
+    "hold": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/card"
+      }
+    },
+    "lost": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/card"
+      }
+    },
+    "played": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/card"
+      },
+      "description": "cards played this turn, in order"
+    },
+    "drinks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "ProduceDrink ids held, in screen order"
+    },
+    "legal": {
+      "type": "array",
+      "description": "the actions offered: [\"play\", hand index], [\"drink\", drink index], [\"end\"]",
+      "items": {
+        "type": "array"
+      }
+    }
+  }
+}
