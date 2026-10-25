@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gkms-uinet"
-version = "0.1b3"
+version = "0.1b4"
 license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.10"
