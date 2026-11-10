@@ -42,6 +42,37 @@ out["score_quantiles"]   # 最终分数预测 {"10%", "25%", "50%", "75%", "90%"
 
 CPU 4 线程每次 `decide` 约 7.5 ms。
 
+## 2.0 beta（测试版）
+
+`model/gkms_uinet_2.0beta.onnx` 是下一版的测试模型，和 Ver1.1 并存；`Policy` 按模型文件自动选择输入版本。
+
+```python
+policy = Policy("model/gkms_uinet_2.0beta.onnx", "path/to/master")
+obs = json.load(open("examples/obs.v2.json", encoding="utf-8"))
+out = policy.decide(obs)
+```
+
+obs 在下文各字段之外多四项（格式见 `gkms_uinet/data/uiobs.v2.schema.json`，示例见 `examples/obs.v2.json`）：
+
+| 字段 | 内容 |
+|---|---|
+| `exam.idol` | P 偶像卡的 IdolCard id |
+| `timers` | 予約効果图标，每项 `[几回合后发动（0 为本回合）, ProduceExamEffect id, 回合结束时发动 1/0]` |
+| `costs` | 生效中的技能卡消耗变更，每项 `[适用卡的 ProduceCardSearch id（全部卡为 null）, 变更后的消耗, 剩余次数]` |
+| `pcount` | 「効果をもう1回発動」类效果，每项 `[适用卡的 ProduceCardSearch id, 追加发动次数, 剩余次数, 剩余回合]` |
+
+没有时写空数组。`status` 多一种 `full_power_point_gain_permil`（全力値獲得量増加，千分比，每层一项）。
+
+留出的考试中与 Ver1.1 打同一局的平均分：
+
+| 留出的考试 | 局数 | Ver1.1 平均分 | 2.0 beta 平均分 | 2.0 beta / Ver1.1 |
+|---|---|---|---|---|
+| 上表的 276 局（6 张偶像卡） | 276 | 925,466 | 861,451 | 93.1% |
+| 113 张 SSR 偶像卡，每张 6–8 局 | 864 | 394,594 | 450,680 | 114.2% |
+| 新增的玩家实录卡组 | 468 | 377,464 | 512,244 | 135.7% |
+
+同一台机器上 CPU 2 线程每次 `decide` 约 5.6 ms（Ver1.1 约 17.7 ms）。
+
 ## master
 
 目录内放以下 9 张表，`.yaml`（如 gakumasu-diff）或 `.jsonl` 均可：
