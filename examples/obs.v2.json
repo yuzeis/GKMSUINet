@@ -1,0 +1,409 @@
+{
+ "v": "uiobs.v2",
+ "exam": {
+  "produce": "produce-008",
+  "step": "AUDITION_MID1",
+  "plan": 4,
+  "idol": "i_card-kllj-3-015",
+  "types": [
+   3,
+   1,
+   2,
+   3,
+   3,
+   2,
+   1,
+   2,
+   3
+  ],
+  "permil": [
+   24620,
+   35460,
+   31550
+  ],
+  "crit": [
+   1088,
+   1392,
+   1871
+  ],
+  "turn": 6,
+  "limit": 9
+ },
+ "num": {
+  "score": 2125,
+  "stamina": 20,
+  "max_stamina": 36,
+  "block": 6,
+  "playable": 3,
+  "plays": 4
+ },
+ "stance": [
+  "Concentration",
+  2
+ ],
+ "status": [
+  [
+   "full_power_point",
+   10.0,
+   -1
+  ],
+  [
+   "parameter_buff",
+   4.0,
+   4
+  ],
+  [
+   "parameter_buff_multiple",
+   1.0,
+   5
+  ],
+  [
+   "lesson_parameter_multiple",
+   0.10000000149011612,
+   2147483642
+  ],
+  [
+   "lesson_parameter_multiple",
+   0.10000000149011612,
+   2147483641
+  ],
+  [
+   "lesson_parameter_multiple",
+   0.10000000149011612,
+   2147483641
+  ]
+ ],
+ "ench": [
+  [
+   "enchant-customize_pitem-03-04-3-001_00-04-2-001_03-03-1-001_00-04-4-002-enc01",
+   -1,
+   -1
+  ],
+  [
+   "enchant-p_item_effect_03-3-289-0-enc01",
+   2,
+   -1
+  ],
+  [
+   "enchant-p_item_effect_3-258-research-event-010-enc01",
+   2,
+   -1
+  ],
+  [
+   "enchant-p_ef-hif_memory-p_card-03-men-2_075-enc02",
+   -1,
+   -1
+  ],
+  [
+   "enchant-p_ef-hif_memory-p_card-03-men-2_066-enc02",
+   -1,
+   -1
+  ],
+  [
+   "enchant-p_ef-hif_memory-p_card-03-men-2_075-enc01",
+   1,
+   -1
+  ],
+  [
+   "enchant-p_ef-hif_memory-p_card-03-men-2_066-enc01",
+   1,
+   -1
+  ],
+  [
+   "enchant-pdrink_03-3-008-enc01",
+   -1,
+   -1
+  ]
+ ],
+ "hand": [
+  {
+   "id": "p_card-03-ido-100_043",
+   "u": 0,
+   "g": [
+    "g_effect-lesson_add-12"
+   ],
+   "p": 1
+  },
+  {
+   "id": "p_card-03-act-1_042",
+   "u": 1,
+   "c": [
+    [
+     "p_card_custom-100-g_effect-lesson_count_add-1",
+     1
+    ],
+    [
+     "p_card_custom-040_040_070-g_effect-effect_add-e_effect-exam_add_grow_effect-p_card_search-hand-all-0_0-g_effect-lesson_add-3-g_effect-effect_add-e_effect-exam_add_grow_effect-p_card_search-hand-all-0_0-g_effect-lesson_add-6-g_effect-effect_add-e_effect-exam_add_grow_effect-p_card_search-hand-all-0_0-g_effect-lesson_add-11",
+     1
+    ]
+   ],
+   "g": [
+    "g_effect-lesson_add-12"
+   ],
+   "p": 1
+  },
+  {
+   "id": "p_card-03-act-3_065",
+   "u": 1,
+   "c": [
+    [
+     "p_card_custom-070-g_effect-effect_add-e_effect-exam_block-0009",
+     1
+    ]
+   ],
+   "g": [
+    "g_effect-lesson_add-12"
+   ],
+   "p": 1
+  },
+  {
+   "id": "p_card-00-men-3_005",
+   "u": 1,
+   "c": [
+    [
+     "p_card_custom-070-g_effect-stamina_consumption_down_turn_add-2",
+     1
+    ]
+   ],
+   "g": [
+    "g_effect-lesson_add-12",
+    "g_effect-lesson_add-3"
+   ],
+   "p": 1
+  }
+ ],
+ "deck": [
+  {
+   "id": "p_card-00-acc-0_002",
+   "u": 0,
+   "g": [
+    "g_effect-lesson_add-12",
+    "g_effect-lesson_add-3"
+   ]
+  },
+  {
+   "id": "p_card-00-acc-0_002",
+   "u": 0,
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-00-sup-3_152",
+   "u": 1,
+   "c": [
+    [
+     "p_card_custom-020-g_effect-cost_reduce-2",
+     1
+    ]
+   ],
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-01-men-2_011",
+   "u": 1,
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-03-act-0_047",
+   "u": 1,
+   "g": [
+    "g_effect-lesson_add-12",
+    "g_effect-lesson_add-3"
+   ]
+  },
+  {
+   "id": "p_card-03-act-0_048",
+   "u": 0,
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-03-act-2_120",
+   "u": 1,
+   "c": [
+    [
+     "p_card_custom-wrapper-p_card-03-act-2_120-c-01",
+     1
+    ],
+    [
+     "p_card_custom-wrapper-p_card-03-act-2_120-b-01",
+     1
+    ]
+   ],
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-03-act-3_189",
+   "u": 1,
+   "c": [
+    [
+     "p_card_custom-wrapper-p_card-03-act-3_189-b-01",
+     1
+    ]
+   ],
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-03-ido-3_163",
+   "u": 1,
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-03-men-2_103",
+   "u": 1,
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-03-men-3_060",
+   "u": 1,
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-03-sup-3_126",
+   "u": 1,
+   "c": [
+    [
+     "p_card_custom-070-g_effect-effect_add-e_effect-exam_full_power_point-0002",
+     1
+    ]
+   ],
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  }
+ ],
+ "grave": [],
+ "hold": [],
+ "lost": [
+  {
+   "id": "p_card-00-acc-0_002",
+   "u": 0,
+   "g": [
+    "g_effect-lesson_add-12",
+    "g_effect-lesson_add-3"
+   ]
+  },
+  {
+   "id": "p_card-00-sup-3_026",
+   "u": 1,
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-01-act-3_010",
+   "u": 1,
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-01-men-3_006",
+   "u": 1,
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-03-act-3_065",
+   "u": 1
+  }
+ ],
+ "played": [
+  {
+   "id": "p_card-00-acc-0_002",
+   "u": 0,
+   "g": [
+    "g_effect-lesson_add-12",
+    "g_effect-lesson_add-3"
+   ]
+  },
+  {
+   "id": "p_card-01-men-3_006",
+   "u": 2,
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  },
+  {
+   "id": "p_card-03-act-3_065",
+   "u": 1
+  },
+  {
+   "id": "p_card-01-act-3_010",
+   "u": 1,
+   "g": [
+    "g_effect-lesson_add-12"
+   ]
+  }
+ ],
+ "drinks": [
+  "pdrink_03-3-011"
+ ],
+ "legal": [
+  [
+   "play",
+   0
+  ],
+  [
+   "play",
+   1
+  ],
+  [
+   "play",
+   2
+  ],
+  [
+   "play",
+   3
+  ],
+  [
+   "drink",
+   0
+  ],
+  [
+   "end"
+  ]
+ ],
+ "timers": [
+  [
+   1,
+   "e_effect-exam_lesson-0047-01",
+   0
+  ],
+  [
+   2,
+   "e_effect-exam_lesson_add_multiple_parameter_buff-0021-1000-01",
+   0
+  ]
+ ],
+ "costs": [
+  [
+   "p_card_search-deck_all",
+   0,
+   1
+  ],
+  [
+   "p_card_search-deck_all",
+   0,
+   2
+  ]
+ ],
+ "pcount": []
+}

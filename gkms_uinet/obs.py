@@ -1,6 +1,7 @@
-"""The names a screen observation (UIObs v1) uses."""
+"""The names a screen observation uses (UIObs v1; v2 adds "timers", "costs", "pcount" and exam "idol")."""
 
 SCHEMA = "uiobs.v1"
+SCHEMA_V2 = "uiobs.v2"
 INF = -1                                   # "no limit" for turns and uses
 
 STATUS_KINDS = (
@@ -49,6 +50,7 @@ STATUS_KINDS = (
     "aggressive_gain_fix",            # やる気獲得量 +n
     "parameter_buff_gain_fix",        # 好調獲得量 +n
     "enthusiastic_gain_permil",       # 熱意増加 (permil)
+    "full_power_point_gain_permil",   # 全力値獲得量増加 (permil; v2)
 )
 STANCES = ("Preservation", "OverPreservation", "Leisurely", "Concentration", "FullPower")
 STEPS = ("AUDITION_MID1", "AUDITION_MID2", "AUDITION_FINAL")
