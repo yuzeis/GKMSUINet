@@ -1,6 +1,6 @@
 # GKMSUINet
 
-学園アイドルマスター H.I.F 出牌网络。
+学園アイドルマスター H.I.F 出牌网络。当前版本 Ver2.1-Kummertranen。
 
 ## 安装
 
@@ -16,7 +16,7 @@ import json
 from gkms_uinet import Policy
 
 policy = Policy("model/gkms_uinet.onnx", "path/to/master")
-obs = json.load(open("examples/obs.json", encoding="utf-8"))
+obs = json.load(open("examples/obs.v2.json", encoding="utf-8"))
 out = policy.decide(obs)
 
 out["action"]            # ["play", 2] / ["drink", 0] / ["end"]
@@ -28,50 +28,20 @@ out["score_quantiles"]   # 最终分数预测 {"10%", "25%", "50%", "75%", "90%"
 
 ## 性能
 
-留出的考试中，与对比对象打同一局（同卡组、同考试种子），比较平均分：
+留出的考试中，各版本打同一局（同卡组、同考试种子），比较平均分：
 
-| 对比对象 | 局数 | 对比对象平均分 | Ver1.1 平均分 | Ver1.1 / 对比对象 |
-|---|---|---|---|---|
-| 玩家手打（排行榜玩家的实录） | 18 | 1,908,212 | 2,136,020 | 111.9% |
-| RNG 未来视（已知随机数与抽牌顺序的搜索） | 276 | 1,157,429 | 925,467 | 80.0% |
-| Ver1.0-zukunftstrachtig | 276 | 866,518 | 925,467 | 106.8% |
-| ver0.1-beta5 | 276 | 843,792 | 925,467 | 109.7% |
-| ver0.1-beta4 | 276 | 831,773 | 925,467 | 111.3% |
-| ver0.1-beta3 | 276 | 822,806 | 925,467 | 112.5% |
-| ver0.1-beta1 | 276 | 479,967 | 925,467 | 192.8% |
+| 留出的考试 | 局数 | Ver1.1 | 2.0 beta | Ver2.1 | Ver2.1 / Ver1.1 |
+|---|---|---|---|---|---|
+| 旧卡池的留出对局（6 张偶像卡） | 276 | 925,466 | 861,451 | 908,268 | 98.1% |
+| 旧卡池的生成卡组 | 2,400 | 728,402 | 692,776 | 735,085 | 100.9% |
+| 113 张 SSR 偶像卡，每张 6–8 局 | 864 | 394,594 | 450,680 | 504,979 | 128.0% |
+| 新增的玩家实录卡组 | 468 | 377,464 | 512,244 | 570,481 | 151.1% |
 
-CPU 4 线程每次 `decide` 约 7.5 ms。
+第一行中有 18 局是排行榜玩家的实录：玩家平均 1,908,212，Ver1.1 2,136,020（111.9%），Ver2.1 1,961,706（102.8%）。
 
-## 2.0 beta（测试版）
+CPU 2 线程每次 `decide` 约 17 ms。
 
-`model/gkms_uinet_2.0beta.onnx` 是下一版的测试模型，和 Ver1.1 并存；`Policy` 按模型文件自动选择输入版本。
-
-```python
-policy = Policy("model/gkms_uinet_2.0beta.onnx", "path/to/master")
-obs = json.load(open("examples/obs.v2.json", encoding="utf-8"))
-out = policy.decide(obs)
-```
-
-obs 在下文各字段之外多四项（格式见 `gkms_uinet/data/uiobs.v2.schema.json`，示例见 `examples/obs.v2.json`）：
-
-| 字段 | 内容 |
-|---|---|
-| `exam.idol` | P 偶像卡的 IdolCard id |
-| `timers` | 予約効果图标，每项 `[几回合后发动（0 为本回合）, ProduceExamEffect id, 回合结束时发动 1/0]` |
-| `costs` | 生效中的技能卡消耗变更，每项 `[适用卡的 ProduceCardSearch id（全部卡为 null）, 变更后的消耗, 剩余次数]` |
-| `pcount` | 「効果をもう1回発動」类效果，每项 `[适用卡的 ProduceCardSearch id, 追加发动次数, 剩余次数, 剩余回合]` |
-
-没有时写空数组。`status` 多一种 `full_power_point_gain_permil`（全力値獲得量増加，千分比，每层一项）。
-
-留出的考试中与 Ver1.1 打同一局的平均分：
-
-| 留出的考试 | 局数 | Ver1.1 平均分 | 2.0 beta 平均分 | 2.0 beta / Ver1.1 |
-|---|---|---|---|---|
-| 上表的 276 局（6 张偶像卡） | 276 | 925,466 | 861,451 | 93.1% |
-| 113 张 SSR 偶像卡，每张 6–8 局 | 864 | 394,594 | 450,680 | 114.2% |
-| 新增的玩家实录卡组 | 468 | 377,464 | 512,244 | 135.7% |
-
-同一台机器上 CPU 2 线程每次 `decide` 约 5.6 ms（Ver1.1 约 17.7 ms）。
+Ver1.1 的模型（读 UIObs v1）在 tag `Ver1.1-Hingebungsvoll`；`Policy` 按模型文件自动选择输入版本。
 
 ## master
 
@@ -81,11 +51,12 @@ obs 在下文各字段之外多四项（格式见 `gkms_uinet/data/uiobs.v2.sche
 
 ## obs
 
-每次轮到选择时按当前画面填写。格式见 `gkms_uinet/data/uiobs.v1.schema.json`，示例见 `examples/obs.json`。
+每次轮到选择时按当前画面填写。格式见 `gkms_uinet/data/uiobs.v2.schema.json`，示例见 `examples/obs.v2.json`。
 
 | 字段 | 内容 |
 |---|---|
-| `exam` | `produce`（`produce-007` 選抜試験，`produce-008` 本戦）、`step`（`AUDITION_MID1` / `AUDITION_MID2` / `AUDITION_FINAL`）、`plan`（2 センス，3 ロジック，4 アノマリー）、`turn`、`limit`（总回合数，含已获得的追加回合）、`types`（每回合的属性：1 Vo，2 Da，3 Vi）、`permil`（Vo / Da / Vi 倍率，千分比）、`crit`（Vo / Da / Vi 审查基准） |
+| `v` | `"uiobs.v2"` |
+| `exam` | `produce`（`produce-007` 選抜試験，`produce-008` 本戦）、`step`（`AUDITION_MID1` / `AUDITION_MID2` / `AUDITION_FINAL`）、`plan`（2 センス，3 ロジック，4 アノマリー）、`idol`（P 偶像卡的 IdolCard id）、`turn`、`limit`（总回合数，含已获得的追加回合）、`types`（每回合的属性：1 Vo，2 Da，3 Vi）、`permil`（Vo / Da / Vi 倍率，千分比）、`crit`（Vo / Da / Vi 审查基准） |
 | `num` | `score`、`stamina`、`max_stamina`、`block`（元気）、`playable`（本回合还能出几张）、`plays`（本回合已出几张） |
 | `stance` | `[指针, 段数]`，指针为 `Preservation` / `OverPreservation` / `Leisurely` / `Concentration` / `FullPower`，没有时为 `[null, 0]` |
 | `status` | 状态图标，每项 `[种类, 数值, 剩余回合]`，见下表 |
@@ -95,10 +66,13 @@ obs 在下文各字段之外多四项（格式见 `gkms_uinet/data/uiobs.v2.sche
 | `played` | 本回合已打出的牌，按打出顺序 |
 | `drinks` | 持有的 ProduceDrink id，按画面顺序 |
 | `legal` | 现在可选的操作：`["play", 手牌序号]`、`["drink", 饮料序号]`、`["end"]` |
+| `timers` | 予約効果图标，每项 `[几回合后发动（0 为本回合）, ProduceExamEffect id, 回合结束时发动 1/0]` |
+| `costs` | 生效中的技能卡消耗变更，每项 `[适用卡的 ProduceCardSearch id（全部卡为 null）, 变更后的消耗, 剩余次数]` |
+| `pcount` | 「効果をもう1回発動」类效果，每项 `[适用卡的 ProduceCardSearch id, 追加发动次数, 剩余次数, 剩余回合]` |
 
 卡：`{"id": ProduceCard id, "u": 当前强化次数, "c": [[ProduceCardCustomize id, 次数]], "g": [考试中获得的 ProduceCardGrowEffect id], "p": 能否打出 1/0}`。`c`、`g` 没有时省略，`p` 只在手牌上写。
 
-无期限、无次数限制写 `-1`。
+`timers`、`costs`、`pcount` 没有时写空数组。无期限、无次数限制写 `-1`。
 
 | 种类 | 图标 | 数值 |
 |---|---|---|
@@ -145,4 +119,5 @@ obs 在下文各字段之外多四项（格式见 `gkms_uinet/data/uiobs.v2.sche
 | `aggressive_gain_fix` | やる気獲得量 +n | n，每层一项 |
 | `parameter_buff_gain_fix` | 好調獲得量 +n | n，每层一项 |
 | `enthusiastic_gain_permil` | 熱意増加 | 千分比，每层一项 |
+| `full_power_point_gain_permil` | 全力値獲得量増加 | 千分比，每层一项 |
 | `extra_turn` | 追加ターン | 回合数 |
